@@ -5,6 +5,8 @@ body, html {
   max-width: 100% !important;
 }
 
+
+
 .fade-enter {
   opacity: 0;
 }
@@ -23,12 +25,11 @@ body, html {
   transition: opacity 1s ease-in-out;
 }
 
-.height-fill {
-  height: 100% !important;
-}
-
 .height-top-part {
   height: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .height-bottem-part {
@@ -36,9 +37,6 @@ body, html {
 }
 
 .vertical-centre {
-  min-height: 75%;  /* Fallback for browsers do NOT support vh unit */
-  min-height: 75vh; /* These two lines are counted as one :-)       */
-
   display: flex;
   align-items: center;
 
@@ -90,4 +88,10 @@ body, html {
   font-weight: bold;
   font-size: 1vw;
   color: White;
+}
+
+@media only screen and (max-width: 992px) {
+  .choices {
+    display: flex;
+  }
 }

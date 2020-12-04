@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import { CSSTransitionGroup } from 'react-transition-group';
 
 import './index.css';
-import './bootstrap.min.css';
 
 class ListItem extends React.Component {
   render() {
@@ -19,14 +18,14 @@ class List extends React.Component {
     const maxItems = 5
     const current = this.props.current;
 
-    const inteval = Math.floor(Math.random() * 3) + 3;
+    const interval = Math.floor(Math.random() * 3) + 3;
 
     const itemsToDisplay = data.filter(function (el, index) {
-      if (Math.ceil(index / inteval) < maxItems) {
+      if (Math.ceil(index / interval) < maxItems) {
         let con1 = (data[current].carbon > 0 && (data[current].carbon / el.carbon > 1))
         let con2 = (data[current].carbon < 0)
         let con3 = (el !== data[current - 1])
-        let con4 = (index % inteval === 0)
+        let con4 = (index % interval === 0)
         return ((con1 || con2) && con3 && con4)
       } else {
         return false
@@ -56,14 +55,14 @@ class Choice extends React.Component {
 class Choices extends React.Component {
   render() {
     const listItems = this.props.options.map((currentValue, index) =>
-    <div className="row py-3" >
-      <div className="col-12">
-        <Choice answerButtonPressed={this.props.answerButtonPressed} answerButtonHover={this.props.answerButtonHover} answerButtonLeave={this.props.answerButtonLeave} option={currentValue} index={index} />
+      <div className="row py-3 px-2" >
+        <div className="col-12">
+          <Choice answerButtonPressed={this.props.answerButtonPressed} answerButtonHover={this.props.answerButtonHover} answerButtonLeave={this.props.answerButtonLeave} option={currentValue} index={index} />
+        </div>
       </div>
-    </div>
   );
   return (
-    <div>{listItems}</div>
+    <div className={"choices"}>{listItems}</div>
   );
 }
 }
@@ -143,9 +142,9 @@ render() {
   const rightImageSrc = data[this.state.currentIndex].thumbnail;
   return (
     <div className="main">
-      <div className="container-fluid height-fill position-absolute" style={{ zIndex: "0" }}>
-        <div className="row height-fill ">
-          <div className="col-6 height-fill p-0" style={{ filter: "brightness(50%)" }}>
+      <div className="container-fluid h-100 position-absolute" style={{ zIndex: "0" }}>
+        <div className="row h-100">
+          <div className="col-lg-6  p-0" style={{ filter: "brightness(50%)" }}>
             <CSSTransitionGroup
               transitionName="fade"
               transitionEnterTimeout={400}
@@ -155,7 +154,7 @@ render() {
               <img key={leftImageSrc} alt={leftImageSrc} src={leftImageSrc} align="middle" style={{ objectFit: "cover", width: "100%", height: "100%" }} />
             </CSSTransitionGroup>
           </div>
-          <div className="col-6 height-fill p-0" style={{ filter: "brightness(50%)" }}>
+          <div className="col-lg-6 p-0" style={{ filter: "brightness(50%)" }}>
             <CSSTransitionGroup
               transitionName="fade"
               transitionEnterTimeout={400}
@@ -167,36 +166,38 @@ render() {
           </div>
         </div>
       </div>
-      <div className="container-fluid height-fill position-absolute" style={{ zIndex: "1", overflow: "hidden" }}>
+      <div className="container-fluid h-100 position-absolute" style={{ zIndex: "1", overflow: "hidden" }}>
         <h2 className="text-right text-white p-3" id="equv-text">Score: {this.state.score}</h2>
-        <div className="row height-top-part">
-          <div className="col-5 vertical-centre">
-            <div className="text-center mx-auto">
-              {data[this.state.currentIndex].carbon < 0 ? (
-                <h1 classname="text-white text-weight-bold" id="equv-text">The Carbon absorbed by</h1>
-              ) : (
-                <h1 classname="text-white text-weight-bold" id="equv-text">The Carbon produced by</h1>
-              )}
-              {this.state.isOverAnswer ? (
-                <h4 className="text-center w-100 context-text">{data[this.state.currentIndex - 1].left} {data[this.state.currentIndex-1].number*this.state.answerOver} {data[this.state.currentIndex - 1].right}</h4>
-              ) : (
-                <h4 className="text-center w-100 context-text">{data[this.state.currentIndex - 1].left} x {data[this.state.currentIndex - 1].right}</h4>
-              )}
-              <h5 className="text-white text-weight-bold" id="source">{data[this.state.currentIndex - 1].number} {data[this.state.currentIndex - 1].right} = {data[this.state.currentIndex - 1].carbon} KG Carbon <a href={data[this.state.currentIndex - 1].source} className="text-white" rel="noopener noreferrer" target="_blank">(source)</a></h5>
-            </div>
-          </div>
-          <div className="col-2 height-fill">
-            <div className="vertical-centre align-content-center">
-              <div className="text-center" style={{ margin: "0 auto" }}>
-                <h3 className="text-white text-center pt-2 font-weight-bold" style={{ fontSize: "1.6vw" }}>Which is x?</h3>
-                <Choices answerButtonPressed={this.onAnswerButtonClicked} answerButtonHover={this.onAnswerButtonHover} answerButtonLeave={this.onAnswerButtonLeave} options={this.state.currentOptions} />
+        <div className="height-top-part">
+          <div className="row">
+            <div className="col-lg-5 vertical-centre">
+              <div className="text-center mx-auto">
+                {data[this.state.currentIndex].carbon < 0 ? (
+                  <h1 className="text-white text-weight-bold" id="equv-text">The Carbon absorbed by</h1>
+                ) : (
+                  <h1 className="text-white text-weight-bold" id="equv-text">The Carbon produced by</h1>
+                )}
+                {this.state.isOverAnswer ? (
+                  <h4 className="text-center w-100 context-text">{data[this.state.currentIndex - 1].left} {data[this.state.currentIndex-1].number*this.state.answerOver} {data[this.state.currentIndex - 1].right}</h4>
+                ) : (
+                  <h4 className="text-center w-100 context-text">{data[this.state.currentIndex - 1].left} x {data[this.state.currentIndex - 1].right}</h4>
+                )}
+                <h5 className="text-white text-weight-bold" id="source">{data[this.state.currentIndex - 1].number} {data[this.state.currentIndex - 1].right} = {data[this.state.currentIndex - 1].carbon} KG Carbon <a href={data[this.state.currentIndex - 1].source} className="text-white" rel="noopener noreferrer" target="_blank">(source)</a></h5>
               </div>
             </div>
-          </div>
-          <div className="col-5 vertical-centre">
-            <div className="text-center mx-auto">
-              <h1 classname="text-white text-weight-bold" id="equv-text">Is equivalent to</h1>
-              <h4 className="text-center w-100 context-text">{data[this.state.currentIndex].left} {data[this.state.currentIndex].number} {data[this.state.currentIndex].right}</h4>
+            <div className="col-lg-2">
+              <div className="vertical-centre align-content-center">
+                <div className="text-center" style={{ margin: "0 auto" }}>
+                  <h3 className="text-white text-center pt-2 font-weight-bold" style={{ fontSize: "1.6vw" }}>Which is x?</h3>
+                  <Choices answerButtonPressed={this.onAnswerButtonClicked} answerButtonHover={this.onAnswerButtonHover} answerButtonLeave={this.onAnswerButtonLeave} options={this.state.currentOptions} />
+                </div>
+              </div>
+            </div>
+            <div className="col-lg-5 vertical-centre">
+              <div className="text-center mx-auto">
+                <h1 className="text-white text-weight-bold" id="equv-text">Is equivalent to</h1>
+                <h4 className="text-center w-100 context-text">{data[this.state.currentIndex].left} {data[this.state.currentIndex].number} {data[this.state.currentIndex].right}</h4>
+              </div>
             </div>
           </div>
         </div>
