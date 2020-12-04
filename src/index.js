@@ -8,7 +8,7 @@ class ListItem extends React.Component {
   render() {
     const amount = Math.round(this.props.number * data[this.props.current].carbon / this.props.amount).toLocaleString()
     return (
-      <li className=" bg-transparent p-3" style={{ fontSize: "calc(10px + 0.5vw)", minWidth: "300px", float: "left", color: "#f7c84c", fontWeight: "600" }}>{this.props.left} {amount} {this.props.right}</li>
+      <li className=" bg-transparent p-3" style={{ fontSize:"calc(10px + 0.5vw)", minWidth: "300px", float: "left", color: "#f7c84c", fontWeight: "600" }}>{this.props.left} {amount} {this.props.right}</li>
     );
   }
 }
