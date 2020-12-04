@@ -144,7 +144,7 @@ render() {
     <div className="main">
       <div className="container-fluid h-100 position-absolute" style={{ zIndex: "0" }}>
         <div className="row h-100">
-          <div className="col-lg-6  p-0" style={{ filter: "brightness(50%)" }}>
+          <div className="col-lg-6 p-0" style={{ filter: "brightness(50%)", minHeight:"50%"}}>
             <CSSTransitionGroup
               transitionName="fade"
               transitionEnterTimeout={400}
@@ -154,7 +154,7 @@ render() {
               <img key={leftImageSrc} alt={leftImageSrc} src={leftImageSrc} align="middle" style={{ objectFit: "cover", width: "100%", height: "100%" }} />
             </CSSTransitionGroup>
           </div>
-          <div className="col-lg-6 p-0" style={{ filter: "brightness(50%)" }}>
+          <div className="col-lg-6 p-0" style={{ filter: "brightness(50%)", minHeight:"50%"}}>
             <CSSTransitionGroup
               transitionName="fade"
               transitionEnterTimeout={400}
@@ -189,7 +189,7 @@ render() {
             <div className="col-lg-2">
               <div className="vertical-centre align-content-center">
                 <div className="text-center" style={{ margin: "0 auto" }}>
-                  <h3 className="text-white text-center pt-2 font-weight-bold" style={{ fontSize: "1.6vw" }}>Which is x?</h3>
+                  <h3 className="text-white text-center pt-2 font-weight-bold" style={{ fontSize: "calc(12px + .3vw)" }}>Which is x?</h3>
                   <Choices answerButtonPressed={this.onAnswerButtonClicked} answerButtonHover={this.onAnswerButtonHover} answerButtonLeave={this.onAnswerButtonLeave} options={this.state.currentOptions} />
                 </div>
               </div>
