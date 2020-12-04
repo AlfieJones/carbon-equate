@@ -94,4 +94,8 @@ body, html {
   .choices {
     display: flex;
   }
+  .height-top-part{
+    align-items: flex-start;
+    padding-top: 10px;
+  }
 }
