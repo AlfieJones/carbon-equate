@@ -169,6 +169,7 @@ render() {
       <div className="container-fluid h-100 position-absolute" style={{ zIndex: "1", overflow: "hidden" }}>
         <h2 className="text-right text-white p-3" id="equv-text">Score: {this.state.score}</h2>
         <div className="height-top-part">
+        <div className="height-top-part-inner">
           <div className="row">
             <div className="col-lg-5 vertical-centre">
               <div className="text-center mx-auto">
@@ -200,10 +201,11 @@ render() {
               </div>
             </div>
           </div>
+          </div>
         </div>
         <div className="row height-bottem-part">
           <div className="col-12" style={{ backgroundColor: "rgba(117, 117, 117, 0.30)" }}>
-            <h5 className="text-white text-center pt-2 font-weight-bold" style={{ fontSize: "1.6vw" }}>{data[this.state.currentIndex].left} {data[this.state.currentIndex].number} {data[this.state.currentIndex].right} has the same impact as:</h5>
+            <h5 className="text-white text-center pt-2 font-weight-bold" style={{ fontSize: "calc(12px + 1vw)" }}>{data[this.state.currentIndex].left} {data[this.state.currentIndex].number} {data[this.state.currentIndex].right} has the same impact as:</h5>
             <List className="p-0" items={data} current={this.state.currentIndex} />
           </div>
         </div>

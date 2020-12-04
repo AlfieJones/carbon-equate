@@ -27,9 +27,13 @@ body, html {
 
 .height-top-part {
   height: 70%;
+}
+
+.height-top-part-inner{
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 100%;
 }
 
 .height-bottem-part {
@@ -54,7 +58,7 @@ body, html {
   border-radius: 30vw !important;
   font-family: Lato,Helvetica,Arial,sans-serif;
   letter-spacing: 0.1vw;
-  font-size: 1.3vw !important;
+  font-size: calc(10px + 0.8vw)  !important;
   text-transform: uppercase;
   color: #f7c84c !important;
   border: 0.3vw solid #ffffff !important;
@@ -76,17 +80,17 @@ body, html {
 .context-text {
   color: #f7c84c;
   font-weight: 700 !important;
-  font-size: 2.6vw;
+  font-size: calc(12px + 1.2vw);
 }
 
 #equv-text{
   font-weight: bold;
-  font-size: 2vw;
+  font-size: calc(12px + 1vw);
   color: White;
 }
 #source{
   font-weight: bold;
-  font-size: 1vw;
+  font-size: calc(8px + 0.5vw);
   color: White;
 }
 
@@ -94,8 +98,7 @@ body, html {
   .choices {
     display: flex;
   }
-  .height-top-part{
-    align-items: flex-start;
-    padding-top: 10px;
+  .height-top-part-inner{
+    height: 50%;
   }
 }
