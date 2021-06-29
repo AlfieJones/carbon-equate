@@ -1,6 +1,8 @@
 # Carbon Equate
 ### Game designed To raise the awareness for the carbon made by doing different activities for JunctionX Exeter Hackathon 
 
+[Live Demo](https://carbon-equate.firstbyte.app/)
+
 ## Available Scripts
 
 In the project directory, you can run:
